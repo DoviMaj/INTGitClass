@@ -1,2 +1,13 @@
-var name = "max";
-alert("hello" + name);
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<script type="text/javascript">
+		 var name = "max";
+		 alert("hello" + name);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
