@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>demo</title>
+	<title>demo1</title>
 	<script type="text/javascript">
 		 var name = "max";
 		 alert("hello" + name);
