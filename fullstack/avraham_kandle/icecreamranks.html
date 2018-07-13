@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+      var result = [{
+    "flavor":"lemon",
+    "rank": 5,
+    "answers": 10
+},
+{
+    "flavor":"lemon",
+    "rank": 4,
+    "answers": 2
+},
+{
+    "flavor":"lemon",
+    "rank": 3,
+    "answers": 1
+},
+{
+    "flavor":"strewberry",
+    "rank": 1,
+    "answers": 4
+},
+{
+    "flavor":"strewberry",
+    "rank": 5,
+    "answers": 6
+},
+{
+    "flavor":"strewberry",
+    "rank": 4,
+    "answers": 2
+},
+{
+    "flavor":"strewberry",
+    "rank": 2,
+    "answers": 1
+},
+{
+    "flavor":"choclate",
+    "rank": 5,
+    "answers": 3
+},
+{
+    "flavor":"choclate",
+    "rank": 2,
+    "answers": 1
+},
+{
+    "flavor":"vanilla",
+    "rank": 4,
+    "answers": 10
+},
+{
+    "flavor":"banana",
+    "rank": 3,
+    "answers": 10
+},
+{
+    "flavor":"banana",
+    "rank": 5,
+    "answers": 8
+},
+{
+    "flavor":"banana",
+    "rank": 1,
+    "answers": 4
+}
+]
+	var p = [];
+	var arr = result.filter(function()
+		if(item.flavor === -1){
+			p.push(result.flavor)
+		} else{
+		
+		}
+		return p; 
+	})
+	var obj = result.reduce(function(a, b){
+		if(a.answers) {
+			return a.answers + b.answers;
+		}
+		return a + b.answers;
+	}, 0);
+	console.log(obj);
+	
+	
+	console.log(obj);
+
+
+//How many answers do I have for same fruit
+
+
+</script>
+
+</html>
