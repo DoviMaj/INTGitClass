@@ -1,0 +1,124 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    	var channelArray = [];
+    	var data = [
+	{
+		channel: 13,
+		rating:[
+			{
+				"pre":5,
+				"prime": 12,
+				"post": 9
+			}
+		],
+		show: "big brother",
+		day: 1
+	},
+	{
+		channel: 13,
+		rating:[
+			{
+				"pre":2,
+				"prime": 17,
+				"post": 4
+			}
+		],
+		show: "Chef Games",
+		day: 2
+	},
+	{
+		channel: 13,
+		rating:[
+			{
+				"pre":13,
+				"prime": 22,
+				"post": 10
+			}
+		],
+		show: "X-Factor",
+		day: 3
+	},
+	{
+		channel: 12,
+		rating:[
+			{
+				"pre":10,
+				"prime": 11,
+				"post": 14
+			}
+		],
+		show: "Around the world",
+		day: 1
+	},
+	{
+		channel: 12,
+		rating:[
+			{
+				"pre":7,
+				"prime": 19,
+				"post": 12
+			}
+		],
+		show: "Ovda",
+		day: 2
+	},
+	{
+		channel: 12,
+		rating:[
+			{
+				"pre":10,
+				"prime": 29,
+				"post": 11
+			}
+		],
+		show: "Star is born",
+		day: 3
+	}
+];
+var channel13 = data.filter(item => ( (item.rating[0].prime > 20) && (item.channel===13)));
+//console.table(channel13);
+var channel13Reduce = channel13.map(item => {
+	return {show: item.show, channel: item.channel, day: item.day}
+})
+//console.table(channel13Reduce);
+var channel12 = data.filter(item => ( (item.rating[0].prime > 20) && (item.channel===12)));
+//console.table(channel12);
+var channel12Reduce = channel12.map(item => {
+	return {show: item.show, channel: item.channel, day: item.day}
+})
+//console.table(channel12Reduce);
+
+var mergedArray = channel12Reduce.concat(channel13Reduce);
+console.table(mergedArray);
+
+
+
+// generate the following:
+// 1. For each channel, craete an array that contains:
+// * only shows which have more then 20% prime watching
+// * have only the show name and channel and day in that array
+// * merge the two arrays into one
+
+
+// 2. use the new array and create another array which holds the following:
+// * only the best show for each day between the two channels
+
+
+// 3. Calculate which channel had more shows in the array from step 2
+    </script>
+</head>
+<body>
+    
+</body>
+
+
+</html>
+
+
+

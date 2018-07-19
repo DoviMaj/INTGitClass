@@ -83,7 +83,7 @@ var Uniquarray = result.map(item => {
     var total = item.rank * item.answers;
     return Object.assign({total}, item)
 });
-//console.table(Uniquarray);
+console.table(Uniquarray);
 
 var Uniquarray2 = Uniquarray.filter((element, index, array) => {
     return (element.total >= 5) && (element.flavor[0] == "b" || element.flavor[0] == "s")
