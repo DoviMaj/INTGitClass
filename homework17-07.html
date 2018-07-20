@@ -98,6 +98,21 @@ var mergedArray = channel12Reduce.concat(channel13Reduce);
 console.table(mergedArray);
 
 
+var array13  = data.filter(item =>item.channel===13);
+var array12  = data.filter(item =>item.channel===12);
+var sum13 = 0;
+var sum12 = 0;
+data.forEach(element => {
+	var temp=0;
+	var rating = element.rating[
+		0
+	];
+	temp += rating.pre + rating.prime + rating.post;
+	(element.channel===12? sum12 += temp : sum13 += temp)
+});
+if (sum12>sum13) console.log("channel 12 has more rating")
+else if (sum12<sum13) console.log("channel 13 has more rating")
+else console.log("the two channels has the same rating");
 
 // generate the following:
 // 1. For each channel, craete an array that contains:
