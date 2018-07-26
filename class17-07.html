@@ -1,0 +1,172 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var tableInfo = [];
+    var result = [{
+    "flavor":"lemon",
+    "rank": 5,
+    "answers": 10
+},
+{
+    "flavor":"lemon",
+    "rank": 4,
+    "answers": 2
+},
+{
+    "flavor":"lemon",
+    "rank": 3,
+    "answers": 1
+},
+{
+    "flavor":"strewberry",
+    "rank": 1,
+    "answers": 4
+},
+{
+    "flavor":"strewberry",
+    "rank": 5,
+    "answers": 6
+},
+{
+    "flavor":"strewberry",
+    "rank": 4,
+    "answers": 2
+},
+{
+    "flavor":"strewberry",
+    "rank": 2,
+    "answers": 1
+},
+{
+    "flavor":"choclate",
+    "rank": 5,
+    "answers": 3
+},
+{
+    "flavor":"choclate",
+    "rank": 2,
+    "answers": 1
+},
+{
+    "flavor":"vanilla",
+    "rank": 4,
+    "answers": 10
+},
+{
+    "flavor":"banana",
+    "rank": 3,
+    "answers": 10
+},
+{
+    "flavor":"banana",
+    "rank": 5,
+    "answers": 8
+},
+{
+    "flavor":"banana",
+    "rank": 1,
+    "answers": 4
+}
+
+ // using Set
+
+
+// for each flavor:
+// 1. how many people answered 
+// 2. what is the average 
+// 3. print a table: flavor | sum of answers | average
+];
+
+// using Set
+ //var uniqueArray = new Set(result.map(item => item.flavor))
+
+ //console.log("uniqueArray", uniqueArray);
+
+ // using map+filter+indexOf
+
+
+
+
+ var uniqueArray2 = result.map(item => item.flavor).filter((element,index, array) => index === array.indexOf(element));
+
+ uniqueArray2.forEach(item => {
+//     var answers = getAnswers(item);
+// var average = getAverage(item, answers);
+
+// var obj = {
+//     flavor: item,
+//     answers: answers,
+//     average: average
+// }
+tableInfo.push(getObject(item))
+
+ })
+
+//
+ 
+
+console.table(tableInfo)
+
+
+function getObject(flavor) {
+    var filtered = result
+    .filter(item => item.flavor === flavor)
+    .map(item => {
+        return {
+            answers: item.answers,
+            rankTotal: item.rank * item.answers
+        }
+    })
+
+   
+
+    var totalAnswers = filtered.map(item => item.answers).reduce((total,item)=> {
+
+        return total + item
+    });
+
+   var average = filtered.map(item => item.rankTotal).reduce((total,item) => {
+        return total + item
+   });
+
+  return {
+    flavor: flavor,
+    totalAnswers: totalAnswers,
+    average: average / totalAnswers,
+  }
+}
+
+// function getAnswers(flavor) {
+//     return result
+//     .filter(item => item.flavor === flavor)
+//     .map(item => item.answers)
+//     .reduce((total,item)=> {
+//         return total + item
+//     });
+// }
+
+// function getAverage(flavor, answers) {
+//     return result
+//     .filter(item => item.flavor === flavor)
+//     .map(item => item.rank * item.answers)
+//     .reduce((total,item) => {
+//         return total+item
+//     }) / answers
+// }
+
+// refactor the code so that there will only be one function that returns the entire object for tableInfo
+// push it to the github repository https://github.com/DoviMaj/INTGitClass
+
+
+</script>
+
+</html>
