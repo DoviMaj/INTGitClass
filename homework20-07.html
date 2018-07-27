@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>submarine</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		for (var subMarine=[],i=0;i<20;++i) subMarine[i]=0;
+		var hitCounter = 0;
+
+		function getRandomInt(max) {
+			  return Math.floor(Math.random() * Math.floor(max));
+			}
+			var ramdomSub = getRandomInt(19);
+			subMarine[ramdomSub]=1;
+			if (ramdomSub < 20) {
+				subMarine[ramdomSub+1] = 1
+			} else {
+				subMarine[ramdomSub-1] = 1
+			}
+			console.log(subMarine);
+		var subMarineLength = subMarine.reduce((a,b) =>  a+b);
+		var input;
+		do {
+			input = prompt("put input");
+			if (input > 0 && input < 19) {
+				if (subMarine[input - 1] == 1) {
+					hitCounter++
+					alert("BOOM");
+					subMarine[input - 1] = 2
+				} else if  (subMarine[input - 1] == 2) {
+					alert("you already did it");
+				} else {
+					alert('Try Again');
+				} 
+
+			} else {
+					alert("not valid"); }
+				} while (hitCounter < subMarineLength);
+				alert("Awesome");
+
+			
+	</script>
+</body>
+</html>
