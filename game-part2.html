@@ -1,0 +1,103 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submarines!</title>
+    <script>
+    	// Function finds Sizes Randomaly
+	    var  findRandom = ((min,max) => {
+	        return (max - (Math.round( Math.random() * (max-min) )))
+	    });
+
+	    var initiateArray = ((size, val=0) => {
+	    	var arr = [];
+	    	for (var i=0;i<size;i++) {
+	    		arr[i] = val;
+	    	}
+	    	return arr;
+	    })
+
+	    var initiateVariables = () => {
+	    	var gameArraySize = findRandom(10,20);
+		    var gameArray = initiateArray(gameArraySize);
+		    var submarines = findRandom(1,3);
+		    var subSizes = [];
+		    for (var i=0; i< submarines; i++) {
+		    	subSizes[i]=findRandom(2,4);
+		    }
+
+		    var minSizeNeeded = subSizes.reduce((a,b) => a+b);
+
+		    return {
+		    	minSizeNeeded,
+		    	gameArray,
+		    	subSizes
+		    }
+	    }
+
+	    var canIUse = (gameObject, startIndex, size) => {
+	    	return gameObject.gameArray.reduce((accumulator, currentValue, currentIndex) => {
+	    			if (currentIndex >= startIndex && currentIndex <= startIndex+size) {
+	    				return accumulator + currentValue
+	    			} else {
+	    				return accumulator +0
+	    			}
+	    		});
+	    }
+
+	    var initiateGame = (gameObject) => {
+	    	if (gameObject.minSizeNeeded == gameObject.gameArray.length) {
+	    		gameObject.gameArray = initiateArray(gameObject.gameArray.length, 1)
+	    	}
+	    	
+
+	    	gameObject.subSizes.forEach(item => {
+	    		var startIndex = findRandom(0,gameObject.gameArray.length-item);
+	    		
+	    		// gameObject.gameArray[startIndex]
+	    		// gameObject.gameArray[startIndex+item]
+
+	    		var canIUseResult = canIUse(gameObject, startIndex, item);
+	    		console.log("canIUseResult", canIUseResult);
+
+	    		while (canIUseResult != 0) {
+	    			startIndex++;
+	    			if (startIndex+item > gameObject.gameArray.length ) {
+	    				startIndex = 0;
+	    			}
+	    			canIUseResult = canIUse(gameObject, startIndex, item);
+	    		};
+
+				for (var i =0; i<item; i++) {
+	    			gameObject.gameArray[startIndex+i]=1;
+	    		}
+	    		
+	    		console.log("gameObject.gameArray",gameObject.gameArray)
+	    		
+
+	    	})
+	    }
+	    
+	    var gameObject;
+	    var maxNumOfGuesses = 13;
+	    var numOfGuesses = 0;
+	    var canContinue=false;
+
+	    while (!canContinue) {
+	    	gameObject = initiateVariables();
+	    	if (gameObject.minSizeNeeded <= gameObject.gameArray.length) {
+	    			canContinue = true;
+	    		}
+	    }
+
+	   initiateGame(gameObject);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
