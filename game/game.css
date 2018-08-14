@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%
+}
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+#content {
+	height: 100%;
+}
+
+#startDiv {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+header {
+	display: flex;
+}
+
+#leftDiv {
+	border: 3px solid black;
+	flex-grow: 2;
+}
+
+#rightDiv {
+	border: 3px solid black;
+	flex-grow: 1;
+	display: flex;
+	justify-content: space-around;
+}
+
+#mainContent {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#seaDiv div {
+    background-color: blue;
+    padding: 20px;
+    margin-left: 3px;
+    display: inline-block;
+}
