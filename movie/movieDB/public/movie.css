@@ -1,0 +1,74 @@
+body {
+	background:#f9f9f9;
+}
+
+/*costumizations*/
+.container-fluid {
+	padding-top: 100px;
+}
+
+.floatRight {
+	float: right;
+}
+.floatLeft {
+	float: left;
+	margin-left: 0px !important;
+}
+
+.centerText {
+	text-align: center;
+}
+
+.centerElement {
+	text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.boxElement {
+    display: block;
+    margin: 0 auto;
+    padding: 0 0 10px;
+}
+
+.cardTitleOverflow {
+	white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+.seats div {
+    width:  30px;
+    height:  30px;
+    display:  inline-block;
+    margin: 3px;
+}
+.hidden {
+	display: none;
+}
+.ocupid .material-icons {
+    color:  red;
+}
+.free .material-icons {
+    color:  blue;
+}
+.material-icons {
+    font-size: 35px !important;
+}
+#movieName {
+    text-align:  center;
+    padding-bottom: 45px;
+}
+.seats {
+    text-align:  center;
+}
+.navbar-brand {
+    font-size: 35px;
+}
+.form-check {
+    color: white;
+    margin-left: 15px;
+    margin-top: 7px;
+}
+#numRes {
+    width: 45px;
+}

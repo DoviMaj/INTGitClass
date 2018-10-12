@@ -145,19 +145,63 @@ var movies = [
 	
 ]
 
+function randomMovies(movies) {
+	movies.forEach(item => {
+	contentDiv.innerHTML += `
+	<div class="card-deck col col-md-3 boxElement">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title cardTitleOverflow">${item.name}</h5>
+				<img class="card-img-top" src="${item.image}"/>
+				<span class="card-text floatRight">Time: ${item.length}</span>
+				<span class="card-text floatLeft">Rank: ${item.rank}</span>
+			</div>
+		</div>
+	</div>`
+	});
+	var cards = document.getElementsByClassName("card");
+	for (var i =0; i< cards.length; i++) {
+		cards[i].addEventListener("click", function(evt) {
+			document.getElementById("exampleModalLabel").innerText=evt.currentTarget.getElementsByClassName("card-title")[0].innerText;
+			$('#exampleModal').modal({})
+
+		})
+	}
+}
 
 //card boxes
 var contentDiv = document.getElementById("rowDiv");
-movies.forEach(item => {
-	contentDiv.innerHTML += `<div class="col col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">${item.name}</h5>
-              <p class="card-text"><img class="imgBox" src="${item.image}"/></p>
-              <p class="card-link floatRight">Time: ${item.length}</p>
-              <p class="card-link floatLeft">Rank: ${item.rank}</p>
-            </div>
-          </div>
-        </div>`
+randomMovies(movies);
+
+var searchInput = document.getElementById('textSearchMovies');
+searchInput.addEventListener('keyup', (evt) => {
+	var searchContent = evt.currentTarget.value;
+	var newArray = movies.filter(a=> a.name.toLowerCase().indexOf(searchContent.toLowerCase()) > -1 );
+	contentDiv.innerHTML = '';
+	randomMovies(newArray);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

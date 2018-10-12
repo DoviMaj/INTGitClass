@@ -128,7 +128,7 @@
 	   			document.getElementById(`item-${inputValue}`).style = "background-color: red";
 	   			if (hitCounter === gameObject.minSizeNeeded) {
 	   				alert("You won the game!");
-	   				return initiateVariables;
+				    location.reload();
 	   			}
 	   		} else {
 	   			//alert("You missed it!");
@@ -166,6 +166,15 @@
 	};
 
 	document.getElementById("seaDiv").innerHTML = showArray();
+
+	
+    document.getElementById('resetButton').onclick = (evt) => {
+		location.reload();
+	};
+
+
+	
+	
 				
 </script>
 </html>
