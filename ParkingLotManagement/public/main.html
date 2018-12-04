@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1></h1>
+	<ul>
+	</ul>
+	<button id="btnAdd">Add car</button>
+	<button id="btnOpen" disabled="disabled">Open gate</button>
+	<script>
+		const login = localStorage.getItem('userid');
+		if (login) {
+			document.getElementsByTagName("h1")[0].innerText="YOU ARE ALLOWED";
+			fetch(`http://localhost:3000/cars?id=${login}`).then(response => response.json()).then(result => {
+				result.forEach(car => {
+					document.getElementsByTagName("ul")[0].innerHTML+=`<li>${car.carId}</li>`;
+				})
+		})
+		} else {
+			document.getElementsByTagName("h1")[0].innerText="YOU ARE NOT ALLOWED";
+		}
+	</script>
+</body>
+</html>

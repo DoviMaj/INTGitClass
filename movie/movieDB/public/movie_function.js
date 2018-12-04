@@ -33,7 +33,7 @@ function randomMovies(movies) {
 				<img class="card-img-top" src="${item.image}"/>
 				<span class="card-text floatRight">Time: ${timeConvert(item.length)}</span>
 				<span class="card-text floatLeft">Rank: ${item.rank}</span>
-				<span class="movieID hidden">${item.id}</span>
+				<span class="movieID hidden">${item._id}</span>
 			</div>
 		</div>
 	</div>`
@@ -92,7 +92,13 @@ lengthInput.addEventListener("click", (evt) => {
 	});
 });
 
-
+var checkBoxInput = document.getElementById("checkBoxSort");
+checkBoxInput.addEventListener("click", (evt) => {
+	fetch(`http://localhost:3000/movies?sort=rank&count=${counter}&order=${order}`).then(result => result.json()).then(rankResult => {
+		contentDiv.innerHTML="";
+		randomMovies(rankResult)
+	});
+});
 
 
 

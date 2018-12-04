@@ -52,7 +52,7 @@ module.exports = [
 		length: 139,
 		id: "b649cd6c-c5a5-40cf-be81-44de946cbc64",
 		rank: 8.8,
-		image: "https://m.media-amazon.com/images/M/MV5BNGM2NjQxZTAtMmU5My00YTk5LWFmOWMtYjZlYzk4YzMwNjFlXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg",
+		image: "https://m.media-amazon.com/images/M/MV5BMjJmYTNkNmItYjYyZC00MGUxLWJhNWMtZDY4Nzc1MDAwMzU5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
 		comments: []
 	},
 	{	

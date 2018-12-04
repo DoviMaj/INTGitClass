@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS class</title>
+	<script type="text/javascript">
+		class Button {
+			constructor(height,width,background) {
+				this.height = height;
+				this.width = width;
+				this.background = background;
+			}
+			click(evt) {
+				alert(`this is the width of the div ${evt.currentTarget.style.width}`);
+			}
+			drow() {
+				let div = document.createElement('div');
+				div.style.height= this.height ;
+				div.style.width= this.width ;
+				div.style.backgroundColor= this.background ;
+				div.id = this.background;
+				div.addEventListener('click', this.click);
+				document.getElementById('element').appendChild(div);
+			}
+		}
+
+		class SuperButton extends Button {
+			constructor(height,width,background,text) {
+				super(height,width,background);
+				this.text = text;
+			}
+			drow() {
+					super.drow();
+					document.getElementById(this.background).innerHTML = this.text;
+				}
+		}
+	</script>
+</head>
+<body>
+	<div id="element"></div>
+</body>
+<script type="text/javascript">
+	let button1 = new Button('100px','100px','red');
+	let button2 = new Button('70px','130px','green');
+	let button3 = new Button('50px','200px','yellow');
+	let button4 = new SuperButton('60px','180px','blue','hello world');
+	button1.drow();
+	button2.drow();
+	button3.drow();
+	button4.drow();
+</script>
+</html>

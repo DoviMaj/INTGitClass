@@ -1,0 +1,49 @@
+	body {
+		display: flex;
+	}
+	.divLogo {
+		font-size:10em;
+		text-align: center;
+	}
+		.noNetwork {
+			width:25px;
+			height: 25px;
+			border-radius: 50%;
+			background-color: red;
+			display: inline-block;
+		}
+		.activeNetwork {
+			width:25px;
+			height: 25px;
+			border-radius: 50%;
+			background-color: green;
+			display: inline-block;
+		}
+		.content {
+			text-align: center;
+		}
+		.hidden {
+			display: none;
+		}
+		div.chat {
+			min-height: 200px;
+			width:100%;
+		}
+		div.user {
+			 padding: 10px;
+    		font-size: 15px;
+		}
+		div.userSelected {
+			background-color: gray;
+			color: #fff;
+		}
+		.chatContent {
+			flex-grow: 1;
+		}
+		.privateChatContent {
+			flex-grow: 1;
+		}
+		.mainContent {
+			align-self: center;
+    width: 100%;
+		}

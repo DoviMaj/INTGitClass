@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 const url = 'mongodb://MaxForToday1:buha123@ds121413.mlab.com:21413/movieapi';
 const dbName = 'movieapi';
 const client = new MongoClient(url);
@@ -133,40 +134,61 @@ app.get('/rank', function(req,res) {
 });
 
 app.get('/seats', function (req, res) {
-	if (req.query.id) {
-		let seatsArray = seatsList.filter(seat => seat.id == req.query.id);
-		if (seatsArray) {
-			let movieObj = movieList.filter(movie => movie.id == req.query.id);
-			let combined = Object.assign(movieObj[0],seatsArray[0]); // one object thanks to Uzia			
-			res.json(combined);
-		}
+	const seatsCollection = db.collection('seats');
 
+	if (req.query.id) {
+		let mObjectId = new ObjectID(req.query.id);
+		
+
+		seatsCollection.aggregate([
+			{$match:{'movie_key':mObjectId}},
+		    {
+		      $lookup: {
+		        from: 'movies',
+		        localField: 'movie_key',
+		        foreignField: '_id',
+		        as: 'movie'
+		      }
+		    },
+		    {
+		      $unwind: '$movie'
+		    }
+		  ]).toArray((err,result) => {		
+				res.json(result);
+			});
+	} else {
+		res.json({});
 	}
-	res.json({});
+	
 })
 
 app.post('/seats', function (req, res) {
+	const seatsCollection = db.collection('seats');
 	if (req.body) {
+		let mObjectId = new ObjectID(req.body.id);
 		let isValid = true;
-		let seats = seatsList.filter(s => s.id == req.body.id);
-
-		// performing validation
-		req.body.selectedSeats.forEach(s => {
-			if (seats[0].chairs[s] === 1) {
-				isValid = false;
+		seatsCollection.findOne({'movie_key':mObjectId }, function(err, result) {
+  				req.body.selectedSeats.forEach(s => {
+					if (result.chairs[s] === 1) {
+						isValid = false;
+					}
+				});
+				console.log("isValid", isValid);
+				if (!isValid) {
+					res.status(403);
+					res.json({status: "invalid"})
+				} else {
+					let localChairs = result.chairs;
+					req.body.selectedSeats.forEach(s => { 
+						localChairs[s] = 1;
+					});
+					seatsCollection.updateOne({'_id':result._id}, {$set: {'chairs': localChairs}}, (err, obj) => {
+					if (!err) {
+						res.json({status: "ok"})
+					}
+				});
 			}
 		})
-		if (!isValid) {
-			res.status(403);
-			res.json({status: "invalid"})
-		}
-
-		// everything is ok!
-		req.body.selectedSeats.forEach(s => {
-			seats[0].chairs[s] = 1;
-		});
-
-		res.json({status: "ok"})
 	}
 })
  

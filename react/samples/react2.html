@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   <script type="text/babel">
+
+      class Form extends React.Component {
+         state = {
+            username:''
+         }
+
+         handleChange = (evt) => {
+            this.setState({username: evt.currentTarget.value});
+         }
+
+         handleSubmit = (evt) => {
+            evt.preventDefault(); // prevents the event from bubbling up the DOM searching for another function to handle it
+            fetch(`https://api.github.com/users/${this.state.username}`).then(resp => resp.json()).then(result => {
+               this.props.addNewCard(result)
+            });
+         }
+         render() {
+            return (
+               <form onSubmit={this.handleSubmit}>
+                  <input type="text" placeholder="Github Username" onChange={this.handleChange}/>
+                  <button type="submit">Add</button>
+               </form>
+            )
+         }
+      }
+
+      // this is a function component (it has no state, no logic).
+      // its only job in the world is to render a card based on the properties it gets
+      const Card = (props) => {
+         return (
+            <div style={{margin: '10px'}}>
+               <img width="75" src={props.avatar_url}/>
+               <div style={{'display': 'inline-block', 'marginLeft':10}}>
+                  <div style={{'fontSize': '1.25em', 'fontWeight':'bold'}}>
+                     {props.name}
+                  </div>
+                  <div>{props.company}</div>
+               </div>
+            </div>
+         )
+      };
+
+      class App extends React.Component {
+         state = {
+            cards: [
+               {avatar_url: "https://avatars3.githubusercontent.com/u/29690015?v=4", name:"Johnny", company:"PerimeterX"},
+               {avatar_url: "https://avatars1.githubusercontent.com/u/25718404?v=4", name:"Nitzan", company:"PerimeterX"}
+            ]
+         }
+         addNewCard = (card) => {
+            this.setState(prevState => {
+               return {
+                  cards: prevState.cards.concat(card)
+               }
+            });
+         }
+          render() {
+            return (
+               <div>
+                  <Form addNewCard={this.addNewCard}/>
+                  {this.state.cards.map(user => <Card {...user}/>)}
+               </div>
+            )
+         }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+   </script>
+</head>
+<body>
+   <div id="root">
+   </div>
+</body>
+</html>
