@@ -10,6 +10,12 @@ class Login extends Component {
 
    handleSubmit = (evt) => {
       // 1. make an api call to localhost:3000 and verify that the username and password exists
+
+      // fetch("/login", {
+      //    method: "POST",
+      //    body: JSON.stringify ;
+      // });
+
    }
 
    handleChange = (evt) => {
