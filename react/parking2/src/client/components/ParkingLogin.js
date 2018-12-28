@@ -28,7 +28,10 @@ class ParkingLogin extends Component {
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify(this.state)
       }).then(response => response.json()).then(response => {
-
+         if (response != {}) {
+            localStorage.setItem("loginSuccessful", response.user);
+            this.props.history.push("/dashboard");
+         }
       });
    };
 

@@ -22,15 +22,16 @@ app.post("/login", (req,res) => {
       console.log("req.body", req.body);
       let item = users.find(u => u.user == req.body.username && u.password == req.body.password);
       if (item) {
-         res.json({name: item.fullName})
+         res.json({user: item.user})
       }
    }
+   res.status(401);
    res.json(result);
 
 });
 
 app.get("/user", (req,res) => {
-
+   
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
