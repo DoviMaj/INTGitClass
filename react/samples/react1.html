@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script type="text/babel">
+		const Result = (props) => {
+			return (
+				<div>{props.counter}</div>
+			)
+		}
+
+		class Button extends React.Component {
+			render() {
+				return (
+					<button onClick={() => {this.props.counterFunction(this.props.counterValue)}}>+{this.props.counterValue}</button>
+				)
+			}
+		}
+
+		class App extends React.Component {
+			state = {
+				counter: 0
+			}
+
+			incementCounter = (incrementValue) => {
+				this.setState((prevState) => {
+					return {
+						counter: prevState.counter+incrementValue
+					}
+				});
+			}
+
+			render() {
+				return (
+					<div>
+						<Button counterFunction={this.incementCounter} counterValue={1} />
+						<Button counterFunction={this.incementCounter} counterValue={5} />
+						<Button counterFunction={this.incementCounter} counterValue={10} />
+						<Button counterFunction={this.incementCounter} counterValue={100} />
+						<Result counter={this.state.counter}/>
+					</div>
+				)
+			}
+		}
+		
+		ReactDOM.render(<App/>, document.getElementById("root"));
+	</script>
+</head>
+<body>
+	<div id="root">
+	</div>
+</body>
+</html>
