@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<script>
+	
+	function calculate(price, discount, isManage) {
+		var totalPrice = price - (price*(discount / 100));
+		
+		if (totalPrice < 25) {
+			totalPrice += 15;
+		}
+		
+		if (isManage) {
+			totalPrice -= (totalPrice*0.5);
+		}
+		
+		alert(`Total price: ${totalPrice} , Manager discount applied: ${isManage}`)
+	}
+	
+	
+	var price;
+	var discount;
+	var isManage;
+	
+	calculate(50, 10, false);
+
+	
+</script>
+<style>
+</style>
+<body>
+</body>
+</html>

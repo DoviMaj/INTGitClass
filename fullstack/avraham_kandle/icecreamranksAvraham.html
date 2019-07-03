@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var result = [{
+    "flavor":"lemon",
+    "rank": 5
+},
+{
+    "flavor":"strewberry",
+    "rank": 1
+},
+{
+    "flavor":"choclate",
+    "rank": 5
+},
+{
+    "flavor":"vanilla",
+    "rank": 4
+},
+{
+    "flavor":"banana",
+    "rank": 3
+},
+{
+    "flavor":"nutella",
+    "rank": 5
+},
+{
+    "flavor":"mint",
+    "rank": 1
+}
+]
+
+// save get all the items above 3 (not including 3) and print them nicely on the console.
+
+var  sss = result.filter(result => result.rank > 3);
+console.table(sss)
+</script>
+
+</html>

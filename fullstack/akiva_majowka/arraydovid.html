@@ -1,0 +1,58 @@
+<!doctype html>
+<!--creates a function that
+ sends to a array the 
+word * the number selected 
+and then runs all names.-->
+<html>
+    <head>
+     <title>addIceCream</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+       <script>
+		
+		var sabores = [];
+        function addIcecream (flavor, balls){
+			var sorvete = {
+			"flavor": flavor,
+			"balls": balls};
+			sabores.push(sorvete);
+			if (balls > 3){
+			console.log(sabores);
+		}}
+
+		addIcecream ("nutella",3) ;
+		addIcecream ("morango",10);
+		addIcecream ("chocolate", 1);
+		addIcecream ("mango", 8);
+			
+		var index = sorvete.findIndex(function(item)){
+		return item.flavor === "chocolate";	
+		};
+
+		/*
+		var sabores = [];
+        function addIcecream (flavor, balls){
+			var sorvete = {
+			"flavor": flavor,
+			"balls": balls};
+			sabores.push(sorvete);
+			;
+		}
+
+		addIcecream ("nutella",3) ;
+		addIcecream ("morango",32);
+		addIcecream ("chocolate", 1);
+		addIcecream ("mango", 10);
+			
+		var newArrey = sabores.filter(function(item){
+			return item.balls >= 3;	
+		});
+		console.log(newArrey);	
+		*/
+       </script>
+    </head>
+<body>
+
+</body>
+</html>
